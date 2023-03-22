@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const beerSchema = new mongoose.Schema({
-    name: String,
-    style: String,
-    ingredients: Array,
+    name: { type: String, required: true },
+    style: { type: String, required: true },
+    ingredients: String,
     instructions: String,
 });
 
