@@ -7,5 +7,10 @@ router.get('/', async (req, res) => {
     res.json(beers);
 });
 
+router.post('/', async (req, res) => {
+    const newBeer = new Beer(req.body);
+    await newBeer.save();
+    res.json(newBeer);
+});
 
 module.exports = router;
