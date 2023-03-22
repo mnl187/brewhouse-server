@@ -13,4 +13,9 @@ router.post('/', async (req, res) => {
     res.json(newBeer);
 });
 
+router.put('/:id', async (req, res) => {
+    const updatedBeer = await Beer.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedBeer);
+});
+
 module.exports = router;
