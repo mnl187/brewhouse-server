@@ -6,3 +6,6 @@ router.get('/', async (req, res) => {
     const beers = await Beer.find();
     res.json(beers);
 });
+
+
+module.exports = router;

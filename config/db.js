@@ -8,12 +8,10 @@ async function connectDB() {
         await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useFindAndModify: false,
-            useCreateIndex: true,
         });
         console.log('MongoDB connected');
     } catch (err) {
-        console.log(err);
+        console.error(err);
         process.exit(1);
     }
 }
