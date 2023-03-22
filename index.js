@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors')
-const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 
 const app = express();
 
@@ -9,7 +12,6 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect('mongodb://localhost/brewhouse', {})
-    .then(() => app.listen(PORT, () => console.log(`Server running on port: {PORT}`)))
-    .catch((error) => console.log(error.message))
+app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+
 
