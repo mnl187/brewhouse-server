@@ -11,7 +11,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-connectDB();
+(async () => {
+    try {
+        await connectDB();
+    } catch (err) {
+        console.error('Error connecting to the database:', err);
+        process.exit(1);
+    }
+})();
 
 app.use('/beers', beerRoutes);
 
