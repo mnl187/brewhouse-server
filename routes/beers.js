@@ -8,9 +8,13 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const newBeer = new Beer(req.body);
-    await newBeer.save();
-    res.json(newBeer);
+    try {
+        const newBeer = new Beer(req.body);
+        const savedBeer = await newBeer.save();
+        res.json(savedBeer);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 });
 
 router.put('/:id', async (req, res) => {
