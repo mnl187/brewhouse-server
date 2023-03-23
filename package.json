@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start-mongo": "cd /d C:/Program Files/MongoDB/Server/6.0/bin&&mongod.exe"
   },
   "keywords": [],
   "author": "",
