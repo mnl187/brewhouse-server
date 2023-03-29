@@ -7,6 +7,19 @@ router.get('/', async (req, res) => {
     res.json(beers);
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const beer = await Beer.findById(req.params.id);
+        if (beer) {
+            res.json(beer);
+        } else {
+            res.status(404).json({ message: 'Beer not found' });
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 router.post('/', async (req, res) => {
     try {
         console.log('Received data:', req.body); // Dodaje logowanie otrzymanych danych
