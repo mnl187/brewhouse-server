@@ -9,24 +9,32 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+passport.use(
+    new LocalStrategy(
+        {usernameFiled: 'username', passwordField: 'password'},
+        async (username, password) => {
+            try {
+                const user = await User.findOne(username)
+                if (!user) {
+                    return ({message: 'Niepoprawna nazwa użytkonika lub hasło'});
+                }
+
+                const isValidPassword = await bcrypt.compare(password, user.password)
+                if (!isValidPassword) {
+                    return ({message: 'Niepoprawna nazwa użytkownika lub hasło'});
+                }
+                return (user);
+            } catch (error) {
+                return (error)
+            }
+        }
+    ))
 dotenv.config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-passport.use(new LocalStrategy(
-    {usernameFiled: 'username', passwordField: 'password'},
-    async (username, password) => {
-        try {
-            const user = await User.findOne(username)
-
-        } catch (error) {
-            return(error)
-        }
-    }
-))
 
 (async () => {
     try {
