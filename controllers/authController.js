@@ -4,7 +4,17 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 const register = async (req, res) => {
-    // kod rejestracji
+    const { username, password } = req.body;
+
+    // Sprawdzenie czy użytkownik istnieje
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+        return res.status(400).json({ message: 'Nazwa użytkownika jest już zajęta' });
+    }
+
+    // Utworzenie nowego użytkownika
+    const newUser = new User({ username, password});
+
 };
 
 const login = (req, res, next) => {
