@@ -30,6 +30,10 @@ const register = async (req, res) => {
 
 const login = (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return res.status(500).json({ message: 'Błąd podczas logowania', error: err });
+        }
+
         res.status(200).json({
             message: 'Zalogowano pomyślnie',
             user: {
