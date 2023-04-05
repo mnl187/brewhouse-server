@@ -1,16 +1,9 @@
 const express = require('express');
-const passport = require('passport');
-const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+const { register, login } = require('../controllers/authController');
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
-    // kod rejestracji
-});
-
-router.post('/login', passport.authenticate('local'), (req, res) => {
-    // kod logowania
-});
+router.post('/register', register);
+router.post('/login', login);
 
 module.exports = router;
