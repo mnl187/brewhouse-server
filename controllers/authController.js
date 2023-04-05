@@ -34,9 +34,21 @@ const login = (req, res, next) => {
             return res.status(500).json({ message: 'Błąd podczas logowania', error: err });
         }
 
+        if (!user) {
+            return res.status(400).json({ message: 'Niepoprawna nazwa użytkownika lub hasło' });
+        }
+
+        // Podpisywanie tokenu JWT
+        const token = jwt.sign(
+            { id: user._id, username: user.username },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
         res.status(200).json({
             message: 'Zalogowano pomyślnie',
             user: {
+                token,
                 id: user._id,
                 username: user.username,
             },
