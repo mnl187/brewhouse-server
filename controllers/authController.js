@@ -30,7 +30,13 @@ const register = async (req, res) => {
 
 const login = (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
-        // kod logowania
+        res.status(200).json({
+            message: 'Zalogowano pomyślnie',
+            user: {
+                id: user._id,
+                username: user.username,
+            },
+        });
     })(req, res, next);
 };
 
