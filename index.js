@@ -6,8 +6,12 @@ const beerRoutes = require('./routes/beers');
 const beerStylesRoutes = require('./routes/beerStyles');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const authRoutes = require('./routes/authRoutes');
+
+const User = require('./models/User')
+
+const app = express();
 
 passport.use(
     new LocalStrategy(
@@ -29,12 +33,14 @@ passport.use(
             }
         }
     ))
-dotenv.config();
 
-const app = express();
+dotenv.config();
 
 app.use(cors());
 app.use(express.json());
+app.use('/auth', authRoutes);
+app.use('/beers', beerRoutes);
+app.use('/beer-styles', beerStylesRoutes);
 
 (async () => {
     try {
@@ -44,9 +50,6 @@ app.use(express.json());
         process.exit(1);
     }
 })();
-
-app.use('/beers', beerRoutes);
-app.use('/beer-styles', beerStylesRoutes);
 
 const PORT = process.env.PORT || 5000;
 
