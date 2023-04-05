@@ -4,6 +4,10 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const beerRoutes = require('./routes/beers');
 const beerStylesRoutes = require('./routes/beerStyles');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 dotenv.config();
 
@@ -11,6 +15,18 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+passport.use(new LocalStrategy(
+    {usernameFiled: 'username', passwordField: 'password'},
+    async (username, password) => {
+        try {
+            const user = await User.findOne(username)
+
+        } catch (error) {
+            return(error)
+        }
+    }
+))
 
 (async () => {
     try {
