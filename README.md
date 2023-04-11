@@ -3,6 +3,21 @@ Aplikacja Piwowarska
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
+Frontend
+
+![](https://img.shields.io/github/languages/top/mnl187/brewhouse-spa)
+![](https://img.shields.io/github/commit-status/mnl187/brewhouse-spa/main/d6d0436)
+![](https://img.shields.io/github/last-commit/mnl187/brewhouse-spa)
+![](https://img.shields.io/github/commit-activity/m/mnl187/brewhouse-spa)
+
+
+Backend
+
+![](https://img.shields.io/github/languages/top/mnl187/brewhouse-server)
+![](https://img.shields.io/github/commit-status/mnl187/brewhouse-server/main/87c50fe)
+![](https://img.shields.io/github/last-commit/mnl187/brewhouse-server)
+![](https://img.shields.io/github/commit-activity/m/mnl187/brewhouse-server)
+
 ## Opis
 
 Brewhouse to aplikacja piwowarska, która pomaga tworzyć i zarządzać przepisami na piwo. Umożliwia użytkownikom dodawanie składników, ustalanie stylu piwa oraz przechowywanie wszystkich informacji w jednym miejscu.
@@ -10,9 +25,13 @@ Brewhouse to aplikacja piwowarska, która pomaga tworzyć i zarządzać przepisa
 # Funkcje
 
 - Tworzenie i edycja przepisów na piwo
-- Zarządzanie składnikami, takimi jak słód, chmiel, drożdże i dodatki
-- Wyszukiwanie przepisów po stylu lub nazwie
 - Usuwanie przepisów
+- Wyszukiwanie przepisów po stylu lub nazwie
+- Zarządzanie składnikami, takimi jak słód, chmiel, drożdże i dodatki
+- Dodawanie instrukcji warzenia
+- Wyszukiwanie styli piwnych po stylu lub nazwie
+- Wyświetlanie szczegółów stylu piwnego jak: Ekstrakt początkowy i końcowy, Zawrotść alkoholu, IBU, Barwa, inne (materiały pochodzą ze strony Beer Judge Certification Program (BJCP) - eng only)
+
 
 ## Wymagania
 - React 18.x
@@ -41,7 +60,6 @@ Alikacja frontendowa znajduje się pod [linkiem](https://github.com/mnl187/brewh
 
 - Pobierz instalkę z tego [linku](https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.5-signed.msi)
 - Utwórz baze danych 'brewhouse'
-- Utwórz w niej dokument 'beers'
 - W pliku [package-lock.json](package-lock.json) skonfiguruj skrypt uruchamiający bazę danych, przykład:
 ```bash
 "start-mongo": "cd /d C:/Program Files/MongoDB/Server/6.0/bin&&mongod.exe" 
@@ -64,7 +82,7 @@ Alikacja frontendowa znajduje się pod [linkiem](https://github.com/mnl187/brewh
 
 ```bash
    cd brewhouse-spa
-   npm install
+  npm install
 ```
 3. Uruchom aplikację:
 ```bash
@@ -73,17 +91,16 @@ Alikacja frontendowa znajduje się pod [linkiem](https://github.com/mnl187/brewh
 4. Otwórz przeglądarkę i przejdź do http://localhost:3000.
 
 
-5. Zaloguj się używając poniższych danych
+5. Zarejestruj się używając formularza
 
-- Nazwa użytkownika:
-```bash
-username
-```
-- Hasło
-```bash
-password
-```
+
+6. Zaloguj się używając danych podanych podczas rejestracji
+
 
 ## Licencja
 
 Ten projekt jest objęty licencją MIT. Więcej informacji można znaleźć w pliku [LICENSE](LICENSE).
+
+Obraz tła pochodzi ze strony [unsplash.com](https://unsplash.com/photos/sVothhm7iRI).
+
+![Opis obrazu](src/assets/images/brewhouse1.jpg)
